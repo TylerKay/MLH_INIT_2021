@@ -1,7 +1,7 @@
 Created by Tyler Kay
 
 Programs:
-	reccommendedSpotifyPlaylist.py
+	recommendedSpotifyPlaylist.py
 		(This program will create a recommended spotify playlist based off your top artists and tracks you listen to.)
 	addSpotifyPlaylist.py
 		(This program will create a playlist and add songs based on what you type via the command line.) 

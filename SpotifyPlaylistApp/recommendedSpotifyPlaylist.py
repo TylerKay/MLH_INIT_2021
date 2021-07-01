@@ -8,7 +8,7 @@ import random
 scope = "playlist-modify-public user-top-read"
 
 # ---- Go to your Spotify Account Overview and enter in your username. It should be a string of characters or numbers such as "12345678910" or "abcdefghijk"
-username = "1237543937"
+username = ""
 
 token = SpotifyOAuth(username=username, scope=scope)
 spotifyObject = spotipy.Spotify(auth_manager = token)
