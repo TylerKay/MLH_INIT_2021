@@ -29,7 +29,7 @@ def getArtistIDs(time_frame):
 
     return artistIDs
 
-def getTopGenres(topGenreIDs):
+def getTopGenres(topArtistIDs):
     topGenresList = []
     for i in range(len(topArtistIDs)):
         curr_artist = spotifyObject.artist(topArtistIDs[i])
@@ -47,48 +47,39 @@ def getRandomThreeGenreSeeds(genreList):
         rng = random.randrange(len(genreList)-1)
         newGenreList.append(genreList[rng])
     return newGenreList
-        
 
-print("Let's create a recommended playlist based on the top artists and tracks you listen too... ")
-playlistName = input("What's the name of the playlist? ")
-playlistDescription = input("What's the description of the playlist? ")
+def authenticate(username):
+    scope = "playlist-modify-public user-top-read"
 
-spotifyObject.user_playlist_create(user = username, name = playlistName, public = True, collaborative = False, description = playlistDescription)
+    token = SpotifyOAuth(username=username, scope=scope)
+    spotifyObject = spotipy.Spotify(auth_manager = token)
+    
+    return True
 
-allUserPlaylist = spotifyObject.user_playlists(user = username)
-playlistID = allUserPlaylist["items"][0]["id"]
+def createAPlaylist(username, playlistName, playlistDescription, numSongs):
+    spotifyObject.user_playlist_create(user = username, name = playlistName, public = True, collaborative = False, description = playlistDescription)
+    allUserPlaylist = spotifyObject.user_playlists(user = username)
+    playlistID = allUserPlaylist["items"][0]["id"]
 
+    topTrackResultsShort = spotifyObject.current_user_top_tracks(limit = 1, time_range = "short_term") # short_term = last 4 weeks, medium_term = last 6 weeks, long_term = calculated by several years of data
 
-topTrackResultsShort = spotifyObject.current_user_top_tracks(limit = 1, time_range = "short_term") # short_term = last 4 weeks, medium_term = last 6 weeks, long_term = calculated by several years of data
-# print(json.dumps(topTrackResultsShort,sort_keys = 4, indent = 4))
+    topTrackIDs = getTrackIDs(topTrackResultsShort)
 
-topTrackIDs = getTrackIDs(topTrackResultsShort)
-# print("Top Track IDs: ", topTrackIDs)
+    topArtistIDs = getArtistIDs(topTrackResultsShort)
 
-topArtistIDs = getArtistIDs(topTrackResultsShort)
-# print("Top Artist IDs: ", topArtistIDs)
+    topGenres = getTopGenres(topArtistIDs)
 
-topGenres = getTopGenres(topArtistIDs)
-print("Top Genres List: ", topGenres)
+    if len(topGenres) > 3: # number of topGenres cannot exceed 3, so we need to limit it by using RNG
+        topGenres = getRandomThreeGenreSeeds(topGenres)
 
-if len(topGenres) > 3: # number of topGenres cannot exceed 3, so we need to limit it by using RNG
-    topGenres = getRandomThreeGenreSeeds(topGenres)
-    print("Three Random Recommended Genres: ", topGenres)
+    # Getting the recommended songs to a list
+    songList = []
+    for i in range(numSongs):
+        recommendedSongs = spotifyObject.recommendations(seed_artists = topArtistIDs, seed_genres = topGenres, seed_tracks = topTrackIDs, limit = 20)
 
-
-# Getting the recommended songs to a list
-print("Getting the list of recommended songs...")
-songList = []
-for i in range(10):
-    recommendedSongs = spotifyObject.recommendations(seed_artists = topArtistIDs, seed_genres = topGenres, seed_tracks = topTrackIDs, limit = 20)
-    # print("Recommended Songs: ", json.dumps(recommendedSongs,sort_keys = 4, indent = 4))
-
-    songList.append(recommendedSongs["tracks"][0]["uri"])
-    # print("Song List: ", songList)
+        songList.append(recommendedSongs["tracks"][0]["uri"])
+        # print("Song List: ", songList)
 
 
-# Add the songs to the playlist
-spotifyObject.user_playlist_add_tracks(user = username, playlist_id = playlistID, tracks = songList)
-
-print("Successfully added recommended songs to the playlist! Enjoy! ")
-
+    # Add the songs to the playlist
+    spotifyObject.user_playlist_add_tracks(user = username, playlist_id = playlistID, tracks = songList)

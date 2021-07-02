@@ -1,15 +1,23 @@
 Created by Tyler Kay
 
 Programs:
-	recommendedSpotifyPlaylist.py
-		(This program will create a recommended spotify playlist based off your top artists and tracks you listen to.)
-	addSpotifyPlaylist.py
-		(This program will create a playlist and add songs based on what you type via the command line.) 
+	appDriver.py (main program)
+		(Main Program. appDriver.py will startup the localhost web application.)
 
+
+
+	recommendedSpotifyPlaylist.py 
+		(Methods that were used in the appDriver program)
+	
+	addSpotifySongs.py
+		(Program that add songs to a playlist via command line)
+	
 Installations Required: 
 	-Python	3+
 	-Spotipy
 		-pip install spotipy
+	-Flask
+		-pip install Flask
 
 Instructions:
 1. Login to https://developer.spotify.com/dashboard/ and click on create an app to recieve a Client ID and Client Secret. In Edit Settings, set Redirect URIs to http://127.0.0.1:8080/.
@@ -31,7 +39,12 @@ Instructions:
 		export SPOTIPY_CLIENT_SECRET='your-spotify-client-secret'
 		export SPOTIPY_REDIRECT_URI='your-app-redirect-url'
 
-3. Login to your spotify account and locate to Account Overview. Enter the username into the username variable in recommendedSpotifyPlaylist.py.
+3. Run appDriver.py. This will start the web application that will run on localhost.
+
+4. In your browser, enter 127.0.0.1:5000 as the url.
+
+5. Fill in the Spotify Username, Playlist Name, Playlist Description, and Number of Songs to Add to Playlist and click "Create a Playlist".
+
 
 
 After that, you're all set! Enjoy!
