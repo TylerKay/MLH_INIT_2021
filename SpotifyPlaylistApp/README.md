@@ -1,20 +1,19 @@
-### Created by Tyler Kay
-
 # Spotify Playlist App
+
+## Created by Tyler Kay
 
 ## Programs:
 
-### appDriver.py (main program)
+- appDriver.py (main program)
 
-    * (Main Program. appDriver.py will startup the localhost web application.)
+  - (Main Program. appDriver.py will startup the localhost web application.)
 
-### recommendedSpotifyPlaylist.py
+- recommendedSpotifyPlaylist.py
 
-    * (Methods that were used in the appDriver program)
+  - (Methods that were used in the appDriver program)
 
-### addSpotifySongs.py
-
-#### (Program that add songs to a playlist via command line)
+- addSpotifySongs.py
+  - (Program that add songs to a playlist via command line)
 
 ## Installations Required:
 
