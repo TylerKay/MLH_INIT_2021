@@ -4,15 +4,22 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import json
 import random
+import os
+from dotenv import load_dotenv, find_dotenv
 
 scope = "playlist-modify-public user-top-read"
 
 # ---- Go to your Spotify Account Overview and enter in your username. It should be a string of characters or numbers such as "12345678910" or "abcdefghijk"
 username = ""
 
-token = SpotifyOAuth(username=username, scope=scope)
-spotifyObject = spotipy.Spotify(auth_manager = token)
+load_dotenv(find_dotenv())
 
+SPOTIPY_CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
+SPOTIPY_CLIENT_SECRET = os.getenv("SPOTIPY_CLIENT_SECRET")
+SPOTIPY_REDIRECT_URI = os.getenv("SPOTIPY_REDIRECT_URI")
+
+token = SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID, username=username, scope=scope)
+spotifyObject = spotipy.Spotify(auth_manager = token)
 
 def getTrackIDs(time_frame):
     trackIDs = []
@@ -50,7 +57,6 @@ def getRandomThreeGenreSeeds(genreList):
 
 def authenticate(username):
     scope = "playlist-modify-public user-top-read"
-
     token = SpotifyOAuth(username=username, scope=scope)
     spotifyObject = spotipy.Spotify(auth_manager = token)
     
