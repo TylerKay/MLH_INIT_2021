@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding-left: 0;
+  /* padding-top: 1%;
+  padding-bottom: 2%; */
+  user-select: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: #202020;
+  z-index: -1;
+  text-align: center;
+}
+.content .header{
+  font-size: 45px;
+  font-weight: 600;
+}
+.content p{
+  font-size: 30px;
+  font-weight: 500;
+}
+
+
+/* Grid and everything else */
+.content-portfolio{
+  /* position: absolute; */
+  justify-content: center;
+  color: #202020;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 3%;
+  display: inline-block;
+  padding-bottom: 5%;
+}
+
+.content-portfolio .header{
+  font-size: 45px;
+  font-weight: 600;
+  /* padding: 50px; */ /* Padding for images (moving up or down) */
+}
+.content p{
+  font-size: 30px;
+  font-weight: 500;
+}
+
+
+
+
+/* Grid */
+.content-portfolio .grid { 
+    display: grid;
+    position: relative;
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+    grid-gap: 20px;
+    align-items: stretch;
+    justify-items: center;
+}
+.content-portfolio .grid img {
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+    max-width: 100%;
+}
+
+/* Specific image  */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+  
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+
+/* Hover img elements */
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: black;
+  pointer-events: none;
+}
+
+.img-container {
+  position: relative;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.img-container:hover .overlay {
+  opacity: 0.6;
+}
+
+.overlay-text {
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}

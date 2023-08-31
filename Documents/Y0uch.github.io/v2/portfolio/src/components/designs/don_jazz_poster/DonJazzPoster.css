@@ -1,0 +1,31 @@
+.don-jazz-poster-main-container {
+    padding-left: 5%;
+}
+
+.don-jazz-poster-main-image-container img{
+    width: 35%;
+}
+
+.don-jazz-poster-flex-container {
+    display: flex; /* Use Flexbox */
+}
+
+.don-jazz-flex-container img {
+    width: 35%; /* For example, set a specific width */
+    margin-right: 20px; /* Add some spacing between the image and the paragraph */
+}
+
+.don-jazz-poster-desc-container {
+    width: 45%;
+    padding-left: 4%;
+}
+
+
+.don-jazz-poster-initial-sketches {
+    padding-top: 5%;
+}
+
+.don-jazz-poster-initial-sketches img{
+    width: 30%;
+    padding-top: 1%;
+}

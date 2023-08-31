@@ -1,0 +1,54 @@
+.modernist-poster-main-container {
+    padding-left: 5%;
+}
+
+.modernist-poster-flex-container {
+    display: flex; /* Use Flexbox */
+    flex-direction: row;
+}
+
+.modernist-poster-flex-container img {
+    /* Add any styles you want for the image here */
+    width: 35%; /* For example, set a specific width */
+    margin-right: 20px; /* Add some spacing between the image and the paragraph */
+}
+
+.modernist-poster-desc-container {
+    width: 40%;
+    padding-left: 3%;
+}
+
+.title h2{
+    /* font-weight: 800; */
+    /* text-shadow: 1px 1px 2px #000; */
+    font-weight: black;
+    display: inline;
+    line-height: 10px;
+}
+
+.modernist-poster-additional-versions-container {
+    margin-left: 0%;
+    padding-top: 5%;
+}
+
+.modernist-poster-additional-versions-container img {
+    margin-left: 0%;
+    padding-bottom: 5%;
+    margin-right: 2.5%;
+}
+
+
+
+
+.modernist-poster-initial-sketches {
+    /* padding: 2%; */
+    margin-left: 0%;
+    padding-top: 2%;
+}
+
+.modernist-poster-initial-sketches img{
+    width: 25%;
+    padding-top: 1%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+}

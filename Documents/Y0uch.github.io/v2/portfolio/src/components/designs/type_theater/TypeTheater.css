@@ -1,0 +1,22 @@
+.type-theater-container {
+    padding-left: 4.5%;
+    display: flex;
+}
+
+.type-theater-main-image-container {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+
+.type-theater-flex-container {
+    display: flex; /* Use Flexbox */
+    align-items: center; /* Align items vertically (in the center) */
+}
+
+.type-theater-description-container {
+    align-items: center;
+    padding-left: 2%;
+    width: 40%;
+    flex-direction: column;
+}

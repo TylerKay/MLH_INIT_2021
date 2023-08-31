@@ -1,0 +1,45 @@
+.boston-infographic-main-container {
+    padding-left: 5%;
+    padding-right: 4%;
+}
+
+.boston-infographic-main-image-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boston-infographic-main-image-container img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boston-infographic-desc-container {
+    /* width: 100%; */
+    /* margin: 4%; */
+    padding-top: 2%;
+}
+
+.boston-infographic-additional-versions-container {
+    padding-top: 5%;
+}
+
+.boston-infographic-initial-sketches {
+    padding-top: 10%;
+}
+
+.boston-infographic-initial-sketches img {
+    width: 50%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    /* margin-right: 20px;  */
+}
+
+
+
+  
